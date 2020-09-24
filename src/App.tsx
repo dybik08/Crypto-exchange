@@ -1,30 +1,39 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import PairData from "./Components/PairData";
+import PairData from './Components/PairData';
+import PairOverbook from './Components/PairOverbook';
 
 function App() {
-  const [state, setState] = useState({
-    displayPairData: false
-  });
+    const [state, setState] = useState({
+        displayPairData: false,
+    });
 
-  const onPairDetailsPress = (visible: boolean) => {
-    setState(prevState => ({
-        ...prevState,
-      displayPairData: visible
-    }))
-  };
+    const onPairDetailsPress = (visible: boolean) => {
+        setState(prevState => ({
+            ...prevState,
+            displayPairData: visible,
+        }));
+    };
 
-  return (
-    <div className="App">
-      <div>
-        <button onClick={() => onPairDetailsPress(true)}>Show BNB/USDT details</button>
-      </div>
-      {state.displayPairData ? <PairData/> : null}
-        <div>
-            <button onClick={() => onPairDetailsPress(false)}>Hide BNB/USDT details</button>
-        </div>
-    </div>
-  );
+    return (
+        state.displayPairData ? <div className='App'>
+             <div>
+                <div className='overbook'>
+                    <PairOverbook />
+                </div>
+                <div className='pair-data'>
+                    <div>
+                        <PairData />
+                    </div>
+                </div>
+            </div>
+            <div className='button-row'>
+                <button onClick={() => onPairDetailsPress(false)}>Hide BNB/USDT details</button>
+            </div>
+        </div> : <div className='App'>: <div  className='button-row'>
+            <button onClick={() => onPairDetailsPress(true)}>Show BNB/USDT details</button>
+        </div></div>
+    );
 }
 
 export default App;

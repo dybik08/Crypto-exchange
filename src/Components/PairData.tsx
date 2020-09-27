@@ -3,7 +3,7 @@ import { NetworkService } from '../Services/NetworkService';
 
 interface PairDataProps {}
 
-const PairData: React.FC<PairDataProps> = props => {
+const PairData: React.FC<PairDataProps> = () => {
     const [data, setData] = useState();
 
     useEffect(() => {
@@ -26,32 +26,30 @@ const PairData: React.FC<PairDataProps> = props => {
         return rows.map((row, index) => {
             if (rowKeys[index] === 'priceChange') {
                 return (
-                    <div key={rowKeys[index]} className='css-1hvp7lu'>
-                        <div className='css-busac4'>{row}</div>
-                        <div className='css-tn35j6'>
+                    <div className='data-row' key={rowKeys[index]}>
+                        <div>{row}</div>
+                        <div>
                             {data[rowKeys[index]]} USDT {data['priceChangePercent']} %
                         </div>
                     </div>
                 );
             }
             return (
-                <div key={rowKeys[index]} className='css-1hvp7lu'>
-                    <div className='css-busac4'>{row}</div>
-                    <div className='css-tn35j6'>{data[rowKeys[index]]} USDT</div>
+                <div className='data-row' key={rowKeys[index]}>
+                    <div>{row}</div>
+                    <div >{data[rowKeys[index]]} USDT</div>
                 </div>
             );
         });
     };
 
     return (
-        <div className='css-km7ga'>
-            <div className='css-4cffwv'>
-                <div className='css-1e07uyp'>
-                    <div className='css-11y6cix'>BNB/USDT</div>
-                    <div className='css-muk5va'>{data.lastPrice} USDT</div>
-                </div>
-                <div className='css-bf5g5u'>{renderPairData()}</div>
+        <div style={{flex: 1}}>
+            <div>
+                <div>BNB/USDT</div>
+                <div>{data.lastPrice} USDT</div>
             </div>
+            <div>{renderPairData()}</div>
         </div>
     );
 };

@@ -21,24 +21,24 @@ const PairOverbook = () => {
 
         return data.map((row: string[], index: number) => {
             return (
-                <div key={`${column}-order${index}`} className='css-1hvp7lu'>
-                    <div className='css-busac4'>{parseFloat(row[0]).toFixed(3)}</div>
-                    <div className='css-tn35j6'>{parseFloat(row[1]).toFixed(3)}</div>
+                <div key={`${column}-order${index}`} className='data-row'>
+                    <div>{parseFloat(row[0]).toFixed(3)}</div>
+                    <div>{parseFloat(row[1]).toFixed(3)}</div>
                 </div>
             );
         });
     };
 
     return (
-        <div className='css-km7ga'>
+        <div className='overbook-container'>
             <div>
                 <div>
                     <h3>ASKS</h3>
-                    <div>
+                    <div className='data-row'>
                         <div>Price(USDT)</div>
                         <div>Amount(BNB)</div>
                     </div>
-                    <div className='css-bf5g5u'>{renderDepthData('asks')}</div>
+                    <div className='overbook-container-depth-data'>{renderDepthData('asks')}</div>
                 </div>
                 <div>
                     <h3>BIDS</h3>
@@ -46,7 +46,7 @@ const PairOverbook = () => {
                         <div>Price(USDT)</div>
                         <div>Amount(BNB)</div>
                     </div>
-                    <div className='css-bf5g5u'>{renderDepthData('bids')}</div>
+                    <div className='overbook-container-depth-data'>{renderDepthData('bids')}</div>
                 </div>
             </div>
         </div>

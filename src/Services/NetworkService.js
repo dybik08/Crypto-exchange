@@ -29,4 +29,12 @@ export class NetworkService {
             callback(res.data);
         });
     }
+
+    static fetchLastPairTrades(pair, callback){
+        const url = API.endpoints.lastTrades(pair);
+
+        axios.get(url).then(res => {
+            callback(res.data);
+        });
+    }
 }

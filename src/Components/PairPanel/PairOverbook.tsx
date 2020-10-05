@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { NetworkService } from '../../Services/NetworkService';
 
+const ASKS_COLUMN = 'asks';
+const BIDS_COLUMN = 'bids';
+
 const PairOverbook = () => {
     const [depthData, setDepthData] = useState();
 
@@ -17,7 +20,7 @@ const PairOverbook = () => {
     }
 
     const renderDepthData = (column: string) => {
-        const data = column === 'asks' ? [...depthData[column]].reverse() : depthData[column];
+        const data = column === ASKS_COLUMN ? [...depthData[column]].reverse() : depthData[column];
 
         return data.map((row: string[], index: number) => {
             return (
@@ -38,7 +41,7 @@ const PairOverbook = () => {
                         <div>Price(USDT)</div>
                         <div>Amount(BNB)</div>
                     </div>
-                    <div className='overbook-container-depth-data'>{renderDepthData('asks')}</div>
+                    <div className='overbook-container-depth-data'>{renderDepthData(ASKS_COLUMN)}</div>
                 </div>
                 <div>
                     <h3>BIDS</h3>
@@ -46,7 +49,7 @@ const PairOverbook = () => {
                         <div>Price(USDT)</div>
                         <div>Amount(BNB)</div>
                     </div>
-                    <div className='overbook-container-depth-data'>{renderDepthData('bids')}</div>
+                    <div className='overbook-container-depth-data'>{renderDepthData(BIDS_COLUMN)}</div>
                 </div>
             </div>
         </div>

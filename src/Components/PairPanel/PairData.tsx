@@ -3,6 +3,8 @@ import { NetworkService } from '../../Services/NetworkService';
 
 interface PairDataProps {}
 
+const PRICE_CHANGE_FIELD = 'price_change';
+
 const PairData: React.FC<PairDataProps> = () => {
     const [data, setData] = useState();
 
@@ -24,7 +26,7 @@ const PairData: React.FC<PairDataProps> = () => {
 
     const renderPairData = () => {
         return rows.map((row, index) => {
-            if (rowKeys[index] === 'priceChange') {
+            if (rowKeys[index] === PRICE_CHANGE_FIELD) {
                 return (
                     <div className='data-row' key={rowKeys[index]}>
                         <div>{row}</div>

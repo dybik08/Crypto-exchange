@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NetworkService } from '../../Services/NetworkService';
 import * as moment from 'moment';
+import {formatData} from "../../Constants/utils";
 
 type LatestTradeData = {
     id: number
@@ -28,8 +29,8 @@ const PairLastTrades = () => {
         return data.map((lastTrade: LatestTradeData) => {
             return (
                 <div key={lastTrade.id} className="latest-trade-row">
-                    <div>{parseFloat(lastTrade.price).toFixed(3)}</div>
-                    <div>{parseFloat(lastTrade.qty).toFixed(3)}</div>
+                    <div>{formatData(lastTrade.price)}</div>
+                    <div>{formatData(lastTrade.qty)}</div>
                     <div>{moment.unix(lastTrade.time / 1000).format('HH:mm:ss')}</div>
                 </div>
             );

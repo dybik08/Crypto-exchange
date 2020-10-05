@@ -56,7 +56,7 @@ const PairPanel = () => {
     );
 };
 
-
+// @ts-ignore
 const PairPanelRoute = ({ children, ...rest }) => {
     return (
         <Route

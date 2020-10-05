@@ -1,59 +1,42 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import './App.css';
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import LoginContainer from './Containers/Auth/LoginContainer';
-import WelcomePage from "./Components/WelcomePage/WelcomePage";
-import PairPanelRoute from './Components/PairPanel/PairPanel'
-import Logout from "./Components/Auth/Logout";
+import WelcomePage from './Components/WelcomePage/WelcomePage';
+import PairPanelRoute from './Components/PairPanel/PairPanel';
+import Logout from './Components/Auth/Logout';
+import { connect } from 'react-redux';
 
-function App(props: any) {
-    // [state, setState] is used when you wish to spy on useState hook during unit testing
-    console.log('app props: ',props)
-    const [state, setState] = useState({
-        displayPairData: false,
-    });
-
-    const onPairDetailsPress = (visible: boolean) => {
-        setState(prevState => ({
-            ...prevState,
-            displayPairData: visible,
-        }));
+interface AppProps {
+    auth: {
+        user: {}
     };
-
-    // return state.displayPairData ? (
-    //     <div className='App'>
-    //         <div className='button-row'>
-    //             <button onClick={() => onPairDetailsPress(false)}>Hide BNB/USDT details</button>
-    //         </div>
-    //     </div>
-    // ) : (
-    //     <div className='App'>
-    //         <div className='button-row'>
-    //             <button onClick={() => onPairDetailsPress(true)}>Show BNB/USDT details</button>
-    //         </div>
-    //     </div>
-    // );
-
-    {/*<LoginContainer/>*/}
-
-    return (
-        <>
-            <div style={{display: 'flex', justifyContent: "flex-end"}}>
-                <Logout/>
-            </div>
-            <Switch>
-                <Route exact path="/">
-                    <WelcomePage />
-                </Route>
-                <Route path="/login">
-                    <LoginContainer />
-                </Route>
-                <PairPanelRoute path="/pair-panel" />
-            </Switch>
-        </>
-
-    )
 }
 
-export default App;
+const App: React.FC<AppProps> = ({ auth }) => {
+    return (
+        <>
+            <div className='sign-out-button-container'>
+                {auth.user ? <Logout /> : null}
+            </div>
+            <Switch>
+                <Route exact path='/'>
+                    <WelcomePage />
+                </Route>
+                <Route path='/login'>
+                    <LoginContainer />
+                </Route>
+                <PairPanelRoute path='/pair-panel' />
+            </Switch>
+        </>
+    );
+};
+
+const mapStateToProps = (state: any) => {
+    return {
+        auth: state.auth,
+    };
+};
+
+export default connect(mapStateToProps, null)(App);

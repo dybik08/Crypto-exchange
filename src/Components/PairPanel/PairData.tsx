@@ -45,7 +45,7 @@ const PairData: React.FC<PairDataProps> = () => {
 
     return (
         <div style={{flex: 1}}>
-            <div>
+            <div style={{textAlign: "center", marginBottom: '10px'}}>
                 <div>BNB/USDT</div>
                 <div>{data.lastPrice} USDT</div>
             </div>

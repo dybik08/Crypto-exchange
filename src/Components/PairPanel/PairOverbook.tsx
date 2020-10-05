@@ -42,7 +42,7 @@ const PairOverbook = () => {
                 </div>
                 <div>
                     <h3>BIDS</h3>
-                    <div>
+                    <div style={{display: "flex", justifyContent: "space-between"}}>
                         <div>Price(USDT)</div>
                         <div>Amount(BNB)</div>
                     </div>

@@ -15,7 +15,7 @@ const WelcomePage = (props: any) => {
     }, []);
 
     return (
-        <div style={{textAlign: 'center', height: '100vh', justifyContent: "center", alignItems: "center", display: "flex" }}>
+        <div className='welcome-page-container'>
             <h1>Welcome Page</h1>
             <Link to='/login' >Sign in</Link>
         </div>

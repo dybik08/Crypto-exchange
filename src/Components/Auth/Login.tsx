@@ -1,5 +1,6 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const layout = {
     labelCol: { span: 8 },
@@ -10,18 +11,21 @@ const tailLayout = {
 };
 
 const Login = (props: any) => {
-    console.log('Login props: ', props);
+    let history = useHistory();
+
     const onFinish = (values: any) => {
-        console.log('Success:', values);
-        props.log_in(values)
+        props.log_in(values);
+        history.push('/pair-panel');
     };
 
     const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
+        console.warn('Failed:', errorInfo);
     };
 
     return (
-        <div style={{ textAlign: 'center', height: '100vh', justifyContent: "center", alignItems: "center", display: "flex" }}>
+        <div
+            className='login-form-container'
+        >
             <Form
                 {...layout}
                 name='basic'

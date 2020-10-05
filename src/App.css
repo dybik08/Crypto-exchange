@@ -46,3 +46,7 @@
     padding-right: 16px;
     flex: 1;
 }
+
+.ant-input-suffix {
+    display: none
+}

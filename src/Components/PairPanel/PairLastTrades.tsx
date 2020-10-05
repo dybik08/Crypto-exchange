@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NetworkService } from '../Services/NetworkService';
+import { NetworkService } from '../../Services/NetworkService';
 import * as moment from 'moment';
 
 type LatestTradeData = {

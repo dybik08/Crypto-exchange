@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NetworkService } from '../Services/NetworkService';
+import { NetworkService } from '../../Services/NetworkService';
 
 const PairOverbook = () => {
     const [depthData, setDepthData] = useState();

@@ -7,6 +7,7 @@ export class NetworkService {
     static fetchPairData(pair, callback) {
         const url = API.endpoints.ticker(pair);
         axios.get(url).then(res => {
+            document.title = `${res.data.symbol} - ${parseFloat(res.data.lastPrice).toFixed(3)}`;
             const pairData = Object.entries(res.data).reduce((prev, [key, value]) => {
                 if (pairDataKeys.includes(key)) {
                     return {
@@ -17,6 +18,8 @@ export class NetworkService {
 
                 return prev;
             }, {});
+
+
 
             callback(pairData);
         });
